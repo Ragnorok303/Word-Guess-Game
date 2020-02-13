@@ -1,19 +1,18 @@
 body {
-    background-image: url("../images/images.jpg");
+    background-image: url("../images/turtles_minimalism.jpg");
     width: 100%
 }
 
 h1 {
     font-size: 43px;
     border: solid 5px red;
-    background: url("../images/brick.jpg");
+    background: white;
     text-align: center;
     margin-top: 2%;
     margin-left: 10%;
     margin-right:10%;
     padding: 15px;
     font-family: 'Tomorrow', sans-serif;
-    color: rgb(6, 138, 247);
     font-weight: bold;
 }
 
@@ -67,7 +66,7 @@ span {
     border: solid 3px red;
 }
 
-#currentword {
+#wordGuess {
     font-size: 30px;
     font-family: 'Permanent Marker', cursive;
     margin-bottom: 10px;
