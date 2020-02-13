@@ -1,101 +1,72 @@
-var wordChoice = ["leonardo","raphael","donatello","michaelangelo","splinter","april o'neal","shredder","pizza","nyc","the foot","casey jones","krang",]
+var words = ["leonardo", "raphael", "donatello", "michaelangelo", "splinter", "april oneal", "shredder", "pizza", "nyc", "footclan", "casey jones", "krang",]
 
-const maxGuess = 14
-var pauseGame = false
+var computerChoice = "";
+var lettersOfWord = []
+var blanks = 0;
+var blanksAndCorrect = [];
+var wrongGuess = [];
+var wins = 0;
+var losses = 0;
+var guessesRemaining = 14;
 
-var guessedLetters = []
-var guessingWord = []
-var wordToMatch
-var numGuess
-var wins = 0
-
-resetGame()
-
-document.onkeypress = function(event) {
-
-if (isAlpha(event.key) && !pauseGame) {
-checkForLetter(event.key.toUpperCase())
+function Game() {
+    computerChoice = words[Math.floor(Math.random() * words.length)];
+    lettersOfWord = computerChoice.split("");
+    blanks = lettersOfWord.length;
+    for (var i = 0; i < blanks; i++) {
+        blanksAndCorrect.push("_");
+    }
+    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
+    console.log(computerChoice);
+    console.log(lettersOfWord)
+    console.log(blanks)
+    console.log(blanksAndCorrect)
 }
+function reset() {
+    guessesRemaining = 14;
+    wrongGuess = [];
+    blanksAndCorrect = [];
+    Game()
 }
-
-function checkForLetter(letter) {
-var foundLetter = false
-//var correctSound = document.createElement("audio")
-//var incorrectSound = document.createElement("audio")
-//correctSound.setAttribute("src", "assets/sounds/stairs.mp3")
-//incorrectSound.setAttribute("src","assets/sounds/croak.mp3")
-
-
-for (var i=0, j= wordToMatch.length; i<j; i++) {
-if (letter === wordToMatch[i]) {
-guessingWord[i] = letter
-foundLetter = true
-correctSound.play()
-
-if (guessingWord.join("") === wordToMatch) {
-
-wins++
-pauseGame = true
-updateDisplay()
-setTimeout(resetGame,5000)
-}
-}
-}
-
-if (!foundLetter) {
-incorrectSound.play()
-
-if (!guessedLetters.includes(letter)) {
-
-guessedLetters.push(letter)
-
-numGuess--
-}
-if (numGuess === 0) {
-
-guessingWord = wordToMatch.split()
-pauseGame = true
-setTimeout(resetGame, 5000)
-}
+function checkLetters(letter) {
+    var letterInWord = false;
+    for (var i = 0; i < blanks; i++) {
+        if (computerChoice[i] == letter) {
+            letterInWord = true;
+        }
+    }
+    if (letterInWord) {
+        for (var i = 0; i < blanks; i++) {
+            if (computerChoice[i] == letter) {
+                blanksAndCorrect[i] = letter;
+            }
+        }
+    }
+    wrongGuess.push(letter);
+    guessesRemaining--;
+    console.log(blanksAndCorrect);
 }
 
-updateDisplay()
-
+function complete() {
+    console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
+    if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+        wins++;
+        reset()
+        document.getElementById("winstracker").innerHTML = " " + wins;
+    } else if (guessesRemaining === 0) {
+        losses++;
+        reset()
+        document.getElementById("image").src = "./assets/images/Foot-Clan.jpg"
+        document.getElementById("losstracker").innerHTML = " " + losses;
+    }
+    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
+    document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
 }
-
-function isAlpha (ch){
-return /^[A-Z]$/i.test(ch);
-}
-
-function resetGame() {
-numGuess = maxGuess
-pauseGame = false
-
-
-    wordToMatch = wordChoice[Math.floor(Math.random() * wordChoice.length)].toUpperCase()
-console.log(wordToMatch)
-
-
-guessedLetters = []
-guessingWord = []
-
-
-for (var i=0, j=wordToMatch.length; i < j; i++){
-
-if (wordToMatch[i] === " ") {
-guessingWord.push(" ")
-} else {
-guessingWord.push("_")
-}
-}
-
-
-updateDisplay()
-}
-
-function updateDisplay () {
-document.getElementById("totalWins").innerText = wins
-document.getElementById("currentWord").innerText = guessingWord.join("")
-document.getElementById("remainingGuesses").innerText = numGuess
-document.getElementById("guessedLetters").innerText =  guessedLetters.join(" ")
+Game()
+document.onkeyup = function (event) {
+    var guesses = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(guesses);
+    complete();
+    console.log(guesses);
+    document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
 }
