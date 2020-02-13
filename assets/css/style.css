@@ -3,7 +3,7 @@ body {
     width: 100%
 }
 
-h1 {
+.header {
     font-size: 43px;
     border: solid 5px red;
     background: white;
@@ -18,8 +18,9 @@ h1 {
 
 h2 {
     font-family: 'Play', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     padding-top: 10px;
+    color: rgb(255, 5, 5);
 }
 
 
@@ -28,27 +29,27 @@ img {
 }
 
 
-.sidebar {
+.playingscreen {
     padding: 5px;
     position: relative;
-    border-top: solid red 2px;
-    border-bottom: solid red 2px;
+    border: solid 2px rgb(248, 150, 2);
     margin-bottom: 5px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
-}
+    font-family: 'Permanent Marker', cursive;
+    font-size: 15px;
+    font-weight: bold;
+} 
 
 span {
     border: solid red 2px;
-    padding-left: 3px;
-    padding-right:3px;
+    padding-left: 5px;
+    padding-right:5px;
     background-color: white; 
     font-size: 15px;
 }
 
 .background {
     background-image: url("../images/brick.jpg");
-    border: solid 5px red;
+    border: solid 5px rgb(5, 160, 250);
     text-align: center;
     margin-top: 2%;
     margin-left: 10%;
@@ -63,14 +64,15 @@ span {
     margin-right: 20%;
     margin-bottom: 5px;
     text-align: center;
-    border: solid 3px red;
+    border: solid 3px rgb(146, 4, 146);
 }
 
 #wordGuess {
-    font-size: 30px;
-    font-family: 'Permanent Marker', cursive;
     margin-bottom: 10px;
     margin-top: 10px;
+    font-size: 30px;
+    color:red;
+    font-family:'Permanent Marker', cursive;
 }
 
 #scoreboard {

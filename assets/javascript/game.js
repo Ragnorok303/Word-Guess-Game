@@ -1,48 +1,47 @@
 var words = ["leonardo", "raphael", "donatello", "michaelangelo", "splinter", "april oneal", "shredder", "pizza", "nyc", "footclan", "casey jones", "krang","ooze"]
-
 var computerChoice = "";
-var letterChoice = []
-var empty = 0;
-var lettersCorrect = [];
-var wrongGuess = [];
+var userGuess = [];
 var wins = 0;
 var losses = 0;
 var numberRemain = 14;
+var letterChoice = []
+var lettersCorrect = [];
+var play = 0;
 
 function Game() {
     computerChoice = words[Math.floor(Math.random() * words.length)];
     letterChoice = computerChoice.split("");
-    empty = letterChoice.length;
-    for (var i = 0; i < empty; i++) {
+    play = letterChoice.length;
+    for (var i = 0; i < play; i++) {
         lettersCorrect.push("_");
     }
     document.getElementById("wordGuess").textContent = "  " + lettersCorrect.join("  ");
     console.log(computerChoice);
     console.log(letterChoice)
-    console.log(empty)
+    console.log(play)
     console.log(lettersCorrect)
 }
-function reset() {
+function restart() {
     numberRemain = 14;
-    wrongGuess = [];
+    userGuess = [];
     lettersCorrect = [];
     Game()
 }
 function checkLetters(letter) {
     var letterInWord = false;
-    for (var i = 0; i < empty; i++) {
+    for (var i = 0; i < play; i++) {
         if (computerChoice[i] == letter) {
             letterInWord = true;
         }
     }
     if (letterInWord) {
-        for (var i = 0; i < empty; i++) {
+        for (var i = 0; i < play; i++) {
             if (computerChoice[i] == letter) {
                 lettersCorrect[i] = letter;
             }
         }
     }
-    wrongGuess.push(letter);
+    userGuess.push(letter);
     numberRemain--;
     console.log(lettersCorrect);
 }
@@ -51,13 +50,13 @@ function complete() {
     console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + numberRemain)
     if (letterChoice.toString() == lettersCorrect.toString()) {
         wins++;
-        reset()
-        document.getElementById("winstracker").textContent = " " + wins;
+        restart()
+        document.getElementById("winingtracker").textContent = " " + wins;
     } else if (numberRemain === 0) {
         losses++;
-        reset()
+        restart()
         document.getElementById("image").src = "./assets/images/Foot-Clan.jpg"
-        document.getElementById("losestracker").textContent = " " + losses;
+        document.getElementById("losingtracker").textContent = " " + losses;
     }
     document.getElementById("wordGuess").textContent = "  " + lettersCorrect.join(" ");
     document.getElementById("numberRemain").textContent = " " + numberRemain;
@@ -68,5 +67,5 @@ document.onkeyup = function (event) {
     checkLetters(guesses);
     complete();
     console.log(guesses);
-    document.getElementById("userguess").textContent = "  " + wrongGuess.join(" ");
+    document.getElementById("userguess").textContent = "  " + userGuess.join(" ");
 }
