@@ -5,14 +5,14 @@ body {
 
 .header {
     font-size: 43px;
-    border: solid 5px red;
-    background: white;
+    font-style: underline;
+    color: rgb(248, 150, 2);
     text-align: center;
     margin-top: 2%;
     margin-left: 10%;
     margin-right:10%;
     padding: 15px;
-    font-family: 'Tomorrow', sans-serif;
+    font-family: 'Press Start 2P', cursive;
     font-weight: bold;
 }
 
@@ -32,18 +32,20 @@ img {
 .playingscreen {
     padding: 5px;
     position: relative;
-    border: solid 2px rgb(248, 150, 2);
+    border: solid 2px rgb(138, 230, 63);
     margin-bottom: 5px;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Press Start 2P', cursive;
     font-size: 15px;
     font-weight: bold;
+    color: rgb(138, 230, 63);
+    background-color: black;
 } 
 
 span {
     border: solid red 2px;
     padding-left: 5px;
     padding-right:5px;
-    background-color: white; 
+    background-color:black; 
     font-size: 15px;
 }
 
