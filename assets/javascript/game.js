@@ -1,4 +1,4 @@
-var words = ["leonardo", "raphael", "donatello", "michaelangelo", "splinter", "apriloneal", "shredder", "pizza", "footclan", "caseyjones","ooze"]
+var words = ["leonardo", "raphael", "donatello", "michaelangelo", "splinter", "april", "shredder", "pizza", "footclan", "casey","ooze"]
 var computerChoice = "";
 var userGuess = [];
 var wins = 0;
@@ -95,10 +95,6 @@ function audio() {
         document.getElementById("image").src = "./assets/images/Mickey.png";
     }
     else if (computerChoice === words[6]){
-        leo.stop()
-        raph.stop()
-        don.stop()
-        mickey.stop()
         loser.play();
         document.getElementById("image").src = "./assets/images/shredder.png";
     }
