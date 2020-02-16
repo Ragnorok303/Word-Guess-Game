@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function(){
+    // Handler when the DOM is fully loaded
+
+
 var words = ["leonardo", "raphael", "donatello", "michaelangelo", "splinter", "april", "shredder", "pizza", "footclan", "casey","ooze"]
 var computerChoice = "";
 var userGuess = [];
@@ -7,6 +11,7 @@ var numberRemain = 10;
 var letterChoice = []
 var lettersCorrect = [];
 var play = 0;
+var firstPlay =true;
 
 function Game() {
     computerChoice = words[Math.floor(Math.random() * words.length)];
@@ -20,6 +25,7 @@ function Game() {
     console.log(letterChoice)
     console.log(play)
     console.log(lettersCorrect)
+    
 }
 function restart() {
     numberRemain = 10;
@@ -64,6 +70,10 @@ function complete() {
 }
 Game()
 document.onkeyup = function (event) {
+    if (firstPlay===true){
+        credit.play();
+        firstPlay= false;
+    }
     var guesses = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(guesses);
     complete();
@@ -82,6 +92,7 @@ var pizza = document.getElementById("pizza");
 var casey = document.getElementById("casey");
 var foot = document.getElementById("footclan");
 var ooze = document.getElementById("ooze");
+var credit = document.getElementById("credit");
 
 function audio() {
     if (computerChoice === words[0]) {
@@ -128,5 +139,6 @@ function audio() {
         ooze.play();
         document.getElementById("image").src = "./assets/images/ooze.jpg";
     }
+    
 } 
-
+})
