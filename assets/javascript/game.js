@@ -3,7 +3,7 @@ var computerChoice = "";
 var userGuess = [];
 var wins = 0;
 var losses = 0;
-var numberRemain = 11;
+var numberRemain = 10;
 var letterChoice = []
 var lettersCorrect = [];
 var play = 0;
@@ -22,7 +22,7 @@ function Game() {
     console.log(lettersCorrect)
 }
 function restart() {
-    numberRemain = 11;
+    numberRemain = 10;
     userGuess = [];
     lettersCorrect = [];
     Game()
@@ -75,7 +75,13 @@ var leo = document.getElementById("leonardo");
 var raph = document.getElementById("raphael");
 var don = document.getElementById("donatello");
 var mikey = document.getElementById("michaelangelo");
-var loser = document.getElementById("shredder")
+var rat = document.getElementById("splinter");
+var april = document.getElementById("april");
+var loser = document.getElementById("shredder");
+var pizza = document.getElementById("pizza");
+var casey = document.getElementById("casey");
+var foot = document.getElementById("footclan");
+var ooze = document.getElementById("ooze");
 
 function audio() {
     if (computerChoice === words[0]) {
@@ -94,9 +100,33 @@ function audio() {
         mikey.play();
         document.getElementById("image").src = "./assets/images/Mickey.png";
     }
+    else if (computerChoice === words[4]){
+        rat.play();
+        document.getElementById("image").src = "./assets/images/Splinter.jpg";
+    }
+    else if (computerChoice === words[5]){
+        april.play();
+        document.getElementById("image").src = "./assets/images/April.jpg";
+    }
     else if (computerChoice === words[6]){
         loser.play();
         document.getElementById("image").src = "./assets/images/shredder.png";
+    }
+    else if (computerChoice === words[7]){
+        pizza.play();
+        document.getElementById("image").src = "./assets/images/pizza.gif";
+    }
+    else if (computerChoice === words[9]){
+        casey.play();
+        document.getElementById("image").src = "./assets/images/Casey.jpg";
+    }
+    else if (computerChoice === words[8]){
+        foot.play();
+        document.getElementById("image").src = "./assets/images/foot.jpg";
+    }
+    else if (computerChoice === words[10]){
+        ooze.play();
+        document.getElementById("image").src = "./assets/images/ooze.jpg";
     }
 } 
 
