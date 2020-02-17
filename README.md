@@ -1,5 +1,9 @@
 # Word-Guess-Game
-## Here is my link [github] (https://ragnorok303.github.io/Word-Guess-Game/) 
-[x]Choose a theme for your game.
-[x]Use key events to listen for the letters that your players will type.
-[x]After the user wins/loses the game should automatically choose another word and make the user play it.
+### Link to the game (https://ragnorok303.github.io/Word-Guess-Game/) 
+## Game Instructions:
+ 1. Press any letter to start guessing.
+ 2. Guess letters to determine the word.
+ 3. If you guess correctly, you win the round and get a point.
+ 4. If you run out of guesses, you lose that round.
+ ![screenshot](assets/images/screenshot.png)
+Format: ![Alt Text](url)
